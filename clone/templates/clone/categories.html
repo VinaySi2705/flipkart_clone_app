@@ -1,0 +1,15 @@
+<html>
+<head>
+  <title>Product categories</title>
+</head>
+<body>
+  {% for product in products %}
+       {% ifchanged product.categories %}
+         <button type="button">{{product.categories}}</button>
+       {% endifchanged %}
+       <br>
+  {% endfor %}
+  <hr>
+<a href="{% url 'admin:logout' %}"><button type="button">Logout</button></a>
+</body>
+</html>
