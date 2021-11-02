@@ -8,13 +8,16 @@ from django.contrib.auth import authenticate
 def dashboard(request):
     return render(request, "clone/dashboard.html")
 
+
 def categories(request):
-        products = Product.objects.all()
-        return render(request, 'clone/categories.html', {'products': products})
+    products = Product.objects.all()
+    return render(request, 'clone/categories.html', {'products': products})
+
 
 def products(request):
     products = Product.objects.all()
     return render(request, 'clone/products.html', {'products': products})
+
 
 def homepage(request):
     return render(request, 'clone/homepage.html')
