@@ -14,6 +14,7 @@
           <img src="{% static product.image %}" width=100px alt="screenshot of project">
         </centre>
         <p>price=RS.{{product.price}}</p>
+        <button type="button">Add to cart</button>
   {% endfor %}
   {% else %}
      <a href="{% url 'login' %}">Login</a>

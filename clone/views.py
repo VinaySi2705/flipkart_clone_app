@@ -16,7 +16,7 @@ def products(request):
     products = Product.objects.all()
     return render(request, 'clone/products.html', {'products': products})
 
-def home(request):
+def homepage(request):
     return render(request, 'clone/homepage.html')
 
 # class LockedView(LoginRequiredMixin):

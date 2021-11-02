@@ -7,13 +7,13 @@
   {% for product in products %}
        {% ifchanged product.categories %}
        <a href="products">
-         <button type="button">{{product.categories}}</button></a>
+         <h1>{{product.categories}}</h1></a>
        {% endifchanged %}
        <br>
   {% endfor %}
   {% else %}
         <a href="{% url 'login' %}">Login</a>
-  {% endif %}      
+  {% endif %}
   <hr>
 <a href="{% url 'admin:logout' %}"><button type="button">Logout</button></a>
 </body>
