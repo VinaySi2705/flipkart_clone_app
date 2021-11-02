@@ -4,7 +4,8 @@
   <title>Products</title>
 </head>
 <body>
-  {% for product in products %}
+  {% if user.is_authenticated %}
+    {% for product in products %}
         {% ifchanged product.categories %}
         <h2>{{product.categories}}</h2>
         {% endifchanged %}<br>
@@ -14,6 +15,9 @@
         </centre>
         <p>price=RS.{{product.price}}</p>
   {% endfor %}
+  {% else %}
+     <a href="{% url 'login' %}">Login</a>
+  {% endif %}
   <br>
   <hr>
 <a href="{% url 'admin:logout' %}"><button type="button">Logout</button></a>
