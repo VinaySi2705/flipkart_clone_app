@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load cart %}
+<!-- body -->
+<div class="container-fluid mt-3">
+	<div class="row">
+
+
+
+
+		<div class="col-lg-3 mx-auto">
+			<div class="list-group">
+
+				<h1><a href="/" >All Products</a></h1>
+				{% for category in categories %}
+				<h1><a href="/?category={{category.id}}">{{category.name}}</a></h1>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div id='products' class="col-lg-9 mx-auto">
+			<div class="row mx-auto">
+				{% for product in products %}
+				<div  id={{product.id}} style="width: 18rem;">
+					<img width=300px src="{{product.image.url}}" alt="Image not found">
+
+						<p >{{product.name}}</p>
+						<p ><b>Price=RS.{{product.price}}</b></p>
+
+
+
+					<div class="card-footer p-0 no-gutters">
+
+
+
+						</div>
+
+						<form action="/#{{product.id}}" method="POST" class="btn-block">
+							{% csrf_token %}
+							<input hidden type="text" name='product' value='{{product.id}}'>
+							<input type="submit" 	value="Add To Cart">
+						</form>
+
+
+					</div>
+
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

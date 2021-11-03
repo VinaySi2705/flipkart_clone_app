@@ -1,17 +1,12 @@
 from django.urls import path
-from django.conf.urls import url, include
-from clone.views import dashboard
-from clone import views
-urlpatterns = [
-    # path('', views.Secr.home),
-    path('dashboard/', views.homepage),
-
-    #path('categories', views.Secr.categories),
-    path('dashboard/categories', views.categories),
-    # path('products/', views.Secr.products),
-    path('products/', views.products),
-    url(r"^accounts/", include("django.contrib.auth.urls")),
-    # url(r"^dashboard/", dashboard, name="dashboard"),
-    # url(r"^dashboard/",dashboard,name="dashboard"),
-    url(r"^", dashboard, name="dashboard"),
+from . views import Index,Signup,Login,logout,Cart,Checkout,OrderView
+from clone.middlewares.auth import auth_middleware
+urlpatterns=[
+    path('',Index.as_view(),name='homepage'),
+    path('signup',Signup.as_view(),name='signup'),
+    path('login',Login.as_view(),name='login'),
+    path('logout',logout,name='Logout'),
+    path('cart',Cart.as_view(),name='cart'),
+    path('check-out',Checkout.as_view(),name='checkout'),
+    path('orders',auth_middleware(OrderView.as_view()),name='orders'),
 ]

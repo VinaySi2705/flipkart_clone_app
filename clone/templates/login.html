@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Login Here</h1>
+<form action="/login" method="POST">
+  {% csrf_token %}
+  {% if error%}
+     <div class="alert alert-danger" role="alert">
+       {{error}}
+       </div>
+  {% endif %}
+  <label form="">Email</label>
+  <input type="email" name="email" id=""   placeholder="example@gmail.com" value={{email}}><br>
+  <label form="">Password</label>
+  <input type="password" name="password" id="" placeholder="******"><br>
+
+  <input type="submit" value="Login">
+</form>
+{% endblock %}
