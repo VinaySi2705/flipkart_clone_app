@@ -153,6 +153,7 @@ class Checkout(View):
         products = Product.get_products_by_id(list(cart.keys()))
         if not customer:
             return redirect('login')
+
         # print(address,phone,customer,cart,products)
         for product in products:
             order = Order(customer=Customer(id=customer),
@@ -165,7 +166,8 @@ class Checkout(View):
             order.save()
 
             request.session['cart'] = {}
-        return redirect('cart')
+
+            return redirect('cart')
 
 
 class OrderView(View):
