@@ -35,7 +35,7 @@ class Signup(View):
         if not error_message:
             customer.password = make_password(customer.password)
             customer.save()  # here we call the function from model customer
-            return redirect('homepage')
+            return redirect('login')
         else:
             value['error'] = error_message
             return render(request, 'signup.html', value)

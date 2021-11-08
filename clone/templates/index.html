@@ -33,21 +33,13 @@
 						<p >{{product.name}}</p>
 						<p ><b>Price=RS.{{product.price}}</b></p>
 
-
-
-					<div class="card-footer p-0 no-gutters">
-
-
-
-						</div>
             {% if request.session.customer %}
-						<form action="/#{{product.id}}" method="POST" class="btn-block">
-							{% csrf_token %}
-							<input hidden type="text" name='product' value='{{product.id}}'>
-							<input type="submit" 	value="Add To Cart">
-						</form>
-            {% endif %}
-
+						    <form action="/#{{product.id}}" method="POST" class="btn-block">
+							     {% csrf_token %}
+							   <input hidden type="text" name='product' value='{{product.id}}'>
+							   <input type="submit" 	value="Add To Cart">
+						   </form>
+          {% endif %}
 					</div>
 
 				</div>
