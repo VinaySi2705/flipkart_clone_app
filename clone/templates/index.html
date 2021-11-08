@@ -34,15 +34,15 @@
 						<p ><b>Price=RS.{{product.price}}</b></p>
             {% if request.session.customer %}
               {% if product|is_in_cart:request.session.cart %}
-                 <form action="/cart">
-                   <button>go to cart</button>
+                 <a href="/cart">
+                   <button>go to cart</button></a>
               {% else %}
 						    <form action="/#{{product.id}}" method="POST" class="btn-block">
 							     {% csrf_token %}
 							   <input hidden type="text" name='product' value='{{product.id}}'>
 							   <input type="submit" 	value="Add To Cart">
 						   </form>
-              {% endif %} 
+              {% endif %}
           {% endif %}
 
 					</div>
