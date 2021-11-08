@@ -8,7 +8,7 @@ class Checkout(View):
         customer = request.session.get('customer')
         cart = request.session.get('cart')
         if not cart:
-            error_message="please add item to the cart"
+            error_message="Cart is empty!!please add item to the cart"
             return render(request,'index.html',{'error':error_message})
         products = Product.get_products_by_id(list(cart.keys()))
         if not customer:
