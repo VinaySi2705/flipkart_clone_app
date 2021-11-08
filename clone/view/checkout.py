@@ -1,6 +1,8 @@
 from django.views import View
-from clone.models import Product,Order,Customer
-from django.shortcuts import redirect,render
+from clone.models import Product, Order, Customer
+from django.shortcuts import redirect, render
+
+
 class Checkout(View):
     def post(self, request):
         address = request.POST.get('address')
@@ -8,8 +10,8 @@ class Checkout(View):
         customer = request.session.get('customer')
         cart = request.session.get('cart')
         if not cart:
-            error_message="Cart is empty!!please add item to the cart"
-            return render(request,'index.html',{'error':error_message})
+            error_message = "Cart is empty!!please add item to the cart"
+            return render(request, 'index.html', {'error': error_message})
         products = Product.get_products_by_id(list(cart.keys()))
         if not customer:
             return redirect('login')

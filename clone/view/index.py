@@ -1,6 +1,8 @@
 from django.views import View
-from clone.models import Category,Product
-from django.shortcuts import redirect,render
+from clone.models import Category, Product
+from django.shortcuts import redirect, render
+
+
 class Index(View):
     def post(self, request):
         product = request.POST.get('product')

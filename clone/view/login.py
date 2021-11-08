@@ -1,7 +1,9 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from clone.models import Customer
 from django.views import View
 from django.contrib.auth.hashers import check_password
+
+
 class Login(View):
     def get(self, request):
         return render(request, 'login.html')

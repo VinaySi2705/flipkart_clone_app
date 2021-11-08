@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views import View
-from clone.models import Order 
+from clone.models import Order
+
+
 class OrderView(View):
     def get(self, request):
         customer = request.session.get('customer')

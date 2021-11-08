@@ -1,7 +1,9 @@
 from django.views import View
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from clone.models import Customer
 from django.contrib.auth.hashers import make_password
+
+
 class Signup(View):
     def get(self, request):
         return render(request, 'signup.html')
