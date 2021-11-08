@@ -32,7 +32,7 @@ class Index(View):
             request.session['cart'] = {}
 
         products = None
-        request.session.get('cart').clear()
+        # request.session.get('cart').clear()
         categories = Category.get_all_categories()
         categoryID = request.GET.get('category')
         if categoryID:
