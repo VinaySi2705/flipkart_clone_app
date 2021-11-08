@@ -1,5 +1,12 @@
 from django.urls import path
-from . views import Index, Signup, Login, logout, Cart, Checkout, OrderView
+from . views import logout
+from clone.view.index import Index
+from clone.view.signup import Signup
+from clone.view.checkout import Checkout
+from clone.view.login import Login
+from clone.view.cart import Cart
+from clone.view.ordered import OrderView
+
 
 urlpatterns = [
     path('', Index.as_view(), name='homepage'),

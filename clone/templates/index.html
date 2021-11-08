@@ -4,11 +4,15 @@
 
 {% load cart %}
 <!-- body -->
+
+{% if error %}
+<h1 class="alert alert-danger" role="alert">
+	 Please add items into the cart
+{% endif %}
+</h1>
+
 <div class="container-fluid mt-3">
 	<div class="row">
-
-
-
 
 		<div class="col-lg-3 mx-auto">
 			<div class="list-group">
@@ -51,8 +55,6 @@
 			</div>
 		</div>
 	</div>
-</div>
-
 
 
 {% endblock %}
