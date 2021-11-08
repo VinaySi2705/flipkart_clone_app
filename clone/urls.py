@@ -4,7 +4,7 @@ from clone.view.index import Index
 from clone.view.signup import Signup
 from clone.view.checkout import Checkout
 from clone.view.login import Login
-from clone.view.cart import Cart
+from clone.view.cartview import Cart
 from clone.view.ordered import OrderView
 
 
