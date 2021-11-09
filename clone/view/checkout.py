@@ -8,15 +8,15 @@ class Checkout(View):
         address = request.POST.get('address')
         phone = request.POST.get('phone')
         customer = request.session.get('customer')
+        # if not customer:
+        #     return redirect('login')
         cart = request.session.get('cart')
         if not cart:
             error_message = "Cart is empty!!please add item to the cart"
             return render(request, 'index.html', {'error': error_message})
         products = Product.get_products_by_id(list(cart.keys()))
-        if not customer:
-            return redirect('login')
 
-        # print(address,phone,customer,cart,products)
+        print(address,phone,customer,cart,products)
         for product in products:
             order = Order(customer=Customer(id=customer),
                           product=product,
@@ -27,6 +27,6 @@ class Checkout(View):
                           )
             order.save()
 
-            request.session['cart'] = {}
+        request.session['cart'] = {}
 
-            return redirect('cart')
+        return redirect('cart')
