@@ -1,5 +1,5 @@
 from django.urls import path
-from . views import logout
+from . views import logout #,profile
 from clone.view.index import Index
 from clone.view.signup import Signup
 from clone.view.checkout import Checkout
@@ -16,4 +16,5 @@ urlpatterns = [
     path('cart', Cart.as_view(), name='cart'),
     path('check-out', Checkout.as_view(), name='checkout'),
     path('orders', OrderView.as_view(), name='orders'),
+
 ]

@@ -16,17 +16,20 @@ class Checkout(View):
             return render(request, 'index.html', {'error': error_message})
         products = Product.get_products_by_id(list(cart.keys()))
 
-        print(address,phone,customer,cart,products)
-        for product in products:
-            order = Order(customer=Customer(id=customer),
-                          product=product,
-                          price=product.price,
-                          address=address,
-                          phone=phone,
-                          quantity=cart.get(str(product.id)),
-                          )
-            order.save()
+        # print(address,phone,customer,cart,products)
+        if address and phone:
+            for product in products:
+                order = Order(customer=Customer(id=customer),
+                              product=product,
+                              price=product.price,
+                              address=address,
+                              phone=phone,
+                              quantity=cart.get(str(product.id)),
+                              )
+                order.save()
 
-        request.session['cart'] = {}
+            request.session['cart'] = {}
+            return redirect('cart')
 
-        return redirect('cart')
+        else:
+            return redirect('cart')
