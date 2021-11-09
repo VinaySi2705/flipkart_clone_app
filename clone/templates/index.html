@@ -30,8 +30,8 @@
 				<div  id={{product.id}} style="width: 18rem;">
 					<img width=300px src="{{product.image.url}}" alt="Image not found">
 
-						<p >{{product.name}}</p>
-						<p ><b>Price=RS.{{product.price}}</b></p>
+						<p class="text-center">{{product.name}}</p>
+						<p class="text-center"><b>Price=RS.{{product.price}}</b></p>
             {% if request.session.customer %}
               {% if product|is_in_cart:request.session.cart %}
                  <form action="/#{{product.id}}" class="col-2 " method="post">
