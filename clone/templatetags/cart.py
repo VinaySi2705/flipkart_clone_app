@@ -32,3 +32,6 @@ def total_cart_price(products, cart):
     for p in products:
         sum += price_total(p, cart)
     return sum
+@register.filter(name='order_price')
+def order_price(order):
+    return order.quantity*order.price
