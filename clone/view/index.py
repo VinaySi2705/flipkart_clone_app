@@ -43,5 +43,6 @@ class Index(View):
         data = {}
         data['products'] = products
         data['categories'] = categories
-        # print('you are:', request.session.get('email'))
+        # print('you are:', request.session.get('customer'))
+        # print('email=>',request.session.get('email'))
         return render(request, 'index.html', data)
