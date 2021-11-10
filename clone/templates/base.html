@@ -34,7 +34,15 @@
   sticky-top navbar
   navbar-expand-lg
    navbar-light bg-white">
-    <a class="navbar-brand" href="/">Welcome to Flipkart</a>
+   <nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">Welcome to
+      <img src="https://www.nicepng.com/png/detail/790-7909408_flipkart-accessories-for-mobile-headphones-tablet-icon-of.png" alt="Flipkart" width="40" height="40">
+    </a>
+  </div>
+</nav>
+
+    <!-- <a class="navbar-brand" href="/">Welcome to Flipkart</a> -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -49,30 +57,26 @@
 
         {% if request.session.customer %}
 
-
-        <!-- <li class="nav-item ">
-          <a class="nav-link" href="/profile">Profile<span class="sr-only">(current)</span></a>
-        </li> -->
-
         <li class="nav-item ">
-          <a class="nav-link" href="/cart">Cart
+          <a class="nav-link" href="/cart"><b>Cart</b>
+            <span class="badge badge-info">{{request.session.cart.keys|length}}</span>
             </a>
         </li>
 
         <li class="nav-item ">
-          <a class="nav-link" href="/orders">Orders<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/orders"><b>Orders</b><span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="/logout">Logout<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/logout"><b>Logout</b><span class="sr-only">(current)</span></a>
         </li>
-      
+
         {% else %}
 
         <li class="nav-item ">
-          <a class="nav-link" href="/signup">Signup<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/signup"><b>Signup</b><span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="/login">Login<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/login"><b>Login</b><span class="sr-only">(current)</span></a>
         </li>
 
         {% endif %}
@@ -84,7 +88,6 @@
 
     </div>
   </nav>
-
 
     {% block content %}{% endblock %}
 

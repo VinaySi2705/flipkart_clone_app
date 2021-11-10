@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="card text-center">
+  <div class="card-header">
+    <h1>Login Here</h1>
+  </div>
 
-<h1>Login Here</h1>
 <form action="/login" method="POST">
+  <div class="card-body">
   {% csrf_token %}
   {% if error%}
      <div class="alert alert-danger" role="alert">
        {{error}}
        </div>
   {% endif %}
-  <label form="">Email</label>
-  <input type="email" name="email" id=""   placeholder="example@gmail.com" value={{email}}><br>
-  <label form="">Password</label>
-  <input type="password" name="password" id="" placeholder="******"><br>
 
-  <input type="submit" value="Login">
+  <label form=""><h3>Email</h3></label>
+  <input type="email" name="email" id=""   placeholder="example@gmail.com" value={{email}}><br>
+  <label form=""><h3>Password</h3></label>
+  <input type="password" name="password" id="" placeholder="******"><br>
+  </div>
+  <div class="card-footer">
+  <input type="submit" class="btn-primary btn-lg" value="Login">
+  </div>
 </form>
+</div>
+
 {% endblock %}

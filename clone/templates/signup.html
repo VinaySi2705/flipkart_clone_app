@@ -1,26 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="card text-center">
+  <div class="card-header">
+    <h1>Create an Account</h1>
+  </div>
 
-<h1>Create an Account</h1>
 <form action="/signup" method="POST">
+  <div class="card-body">
   {% csrf_token %}
   {% if error%}
      <div class="alert alert-danger" role="alert">
        {{error}}
        </div>
   {% endif %}
-  <label form="">First Name</label>
+  <label form=""><h3>First Name</h3></label>
   <input type="text"  name="firstname" value={{first_name}}><br>
-  <label form="">Last Name</label>
+  <label form=""><h3>Last Name</h3></label>
   <input type="text" name="lastname" value={{last_name}}><br>
-  <label form="">Mobile no.</label>
+  <label form=""><h3>Mobile no.</h3></label>
   <input type="text" name="phone" id=""  placeholder="0123456789" value={{phone}}><br>
-  <label form="">Email</label>
+  <label form=""><h3>Email</h3></label>
   <input type="email" name="email" id=""   placeholder="example@gmail.com" value={{email}}><br>
-  <label form="">Password</label>
+  <label form=""><h3>Password</h3></label>
   <input type="password" name="password" id="" placeholder="******"><br>
-
-  <input type="submit" value="Create an Account">
+  </div>
+  <div class="card-footer">
+  <input type="submit" class="btn-primary btn-lg" value="Create an Account">
+  </div>
 </form>
+
+</div>
 {% endblock %}
