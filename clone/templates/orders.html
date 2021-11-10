@@ -5,10 +5,10 @@
 {% load cart %}
 <div class="container">
    <div>
-        <p>Your Orders</p>
+        <h1 class="text-center">Your Orders</h1>
         <hr>
         <table class="table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th>Sno.</th>
                     <th>Image</th>
@@ -25,7 +25,11 @@
             <tbody>
 
                 {% for order in orders %}
-                <tr>
+                {% if order.status %}
+                <tr class="table-success">
+                  {% else %}
+                  <tr class="table-danger">
+                    {% endif %}
                     <td>{{forloop.counter}}</td>
                     <td><img style="height: 80px;"src="{{order.product.image.url}}" alt=""></td>
                     <td>{{order.product.name}}</td>

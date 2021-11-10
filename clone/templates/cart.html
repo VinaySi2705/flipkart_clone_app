@@ -5,10 +5,10 @@
 {% load cart %}
 <div class="container">
    <div>
-        <h1>Your Cart</h1>
+        <h1 class="text-center">Your Cart</h1>
         <hr>
         <table class="table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th>Sno.</th>
                     <th>Image</th>
@@ -21,7 +21,7 @@
             <tbody>
 
                 {% for product in products %}
-                <tr>
+                <tr class="bg-success">
                     <td>{{forloop.counter}}</td>
                     <td><img style="height: 80px;"src="{{product.image.url}}" alt="image not found"></td>
                     <td>{{product.name}}</td>
