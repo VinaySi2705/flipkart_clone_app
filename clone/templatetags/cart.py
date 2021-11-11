@@ -39,5 +39,5 @@ def order_price(order):
 
 @register.filter(name='profile')
 def profile(customer_id):
-    nameobject=Customer.objects.filter(id=int(customer_id))
+    nameobject=Customer.objects.filter(id=customer_id)
     return nameobject

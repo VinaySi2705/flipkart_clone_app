@@ -34,7 +34,7 @@
   <nav class="one-edge-shadow
   sticky-top navbar
   navbar-expand-lg
-   navbar-light bg-white">
+   navbar-light  font-weight-bold bg-primary">
    <nav class="navbar navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="/">Welcome to
@@ -60,7 +60,7 @@
 
         <li class="nav-item ">
           <a class="nav-link" href="/cart"><b>Cart</b>
-            <span class="badge badge-info">{{request.session.cart.keys|length}}</span>
+            <span class="badge badge-info bg-warning">{{request.session.cart.keys|length}}</span>
             </a>
         </li>
 
