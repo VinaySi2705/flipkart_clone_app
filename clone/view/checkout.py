@@ -4,6 +4,9 @@ from django.shortcuts import redirect, render
 
 
 class Checkout(View):
+    def get(self, request):
+        return redirect('cart')
+
     def post(self, request):
         address = request.POST.get('address')
         phone = request.POST.get('phone')

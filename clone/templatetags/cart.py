@@ -12,6 +12,7 @@ def is_in_cart(product, cart):
             return True
     return False
 
+
 @register.filter(name='cart_quantity')
 def cart_quantity(product, cart):
     keys = cart.keys()
@@ -33,11 +34,13 @@ def total_cart_price(products, cart):
         sum += price_total(p, cart)
     return sum
 
+
 @register.filter(name='order_price')
 def order_price(order):
     return order.quantity*order.price
 
+
 @register.filter(name='profile')
 def profile(customer_id):
-    nameobject=Customer.objects.filter(id=customer_id)
+    nameobject = Customer.objects.filter(id=customer_id)
     return nameobject

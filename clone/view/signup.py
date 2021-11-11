@@ -15,6 +15,7 @@ class Signup(View):
         phone = postData.get('phone')
         email = postData.get('email')
         password = postData.get('password')
+        confirm_password = postData.get('confirm_password')
         # here we validate the input data
         value = {'first_name': first_name,
                  'last_name': last_name,
@@ -31,6 +32,9 @@ class Signup(View):
                             )
 
         error_message = self.validateCustomer(customer)
+        # here we validate the password
+        if password != confirm_password:
+            error_message = "Password doesn't match"
         # saving
         if not error_message:
             customer.password = make_password(customer.password)
