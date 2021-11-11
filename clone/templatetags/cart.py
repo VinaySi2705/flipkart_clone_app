@@ -1,5 +1,5 @@
 from django import template
-
+from clone.models import Customer
 register = template.Library()
 
 
@@ -32,6 +32,12 @@ def total_cart_price(products, cart):
     for p in products:
         sum += price_total(p, cart)
     return sum
+
 @register.filter(name='order_price')
 def order_price(order):
     return order.quantity*order.price
+
+@register.filter(name='profile')
+def profile(customer_id):
+    nameobject=Customer.objects.filter(id=int(customer_id))
+    return nameobject
