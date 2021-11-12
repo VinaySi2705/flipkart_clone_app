@@ -1,13 +1,14 @@
 from django.views import View
 from clone.models import Category, Product
 from django.shortcuts import redirect, render
-
+from django.contrib import messages
 
 class Index(View):
     def post(self, request):
         product = request.POST.get('product')
         remove = request.POST.get('remove')
         cart = request.session.get('cart')
+        item=Product.objects.get(id=product)
         if cart:
             quantity = cart.get(product)
             if quantity:
@@ -17,12 +18,25 @@ class Index(View):
                     else:
                         cart[product] = quantity-1
                 else:
-                    cart[product] = quantity+1
+                    if quantity<item.quantity:
+                        cart[product]=quantity+1
+                    else:
+                        messages.warning(request,'Item is out of limit')
+                        return redirect('homepage')
             else:
-                cart[product] = 1
+                if quantity<item.quantity:
+                    cart[product]=1
+                else:
+                    messages.warning(request,'Item is out of limit')
+                    return redirect('homepage')
+
         else:
             cart = {}
-            cart[product] = 1
+            if item.quantity!=0:
+                cart[product]=1
+            else:
+                messages.warning(request,'Item is out of limit')
+                return redirect('homepage')
         request.session['cart'] = cart
         # print(request.session['cart'])
         return redirect('homepage')

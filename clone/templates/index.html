@@ -4,7 +4,12 @@
 
 {% load cart %}
 <!-- body -->
-
+{% for msg in messages %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+swal('{{msg}}')
+</script>
+{% endfor %}
 
 
 <div class="container-fluid mt-3">
@@ -14,12 +19,6 @@
 		<div class="col-lg-3 mx-auto">
 			<div class="list-group">
 
-        {% for msg in messages %}
-				<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-				<script>
-				swal('{{msg}}')
-				</script>
-        {% endfor %}
 				<h1><a href="/" class="list-group-item list-group-item-action list-group-item active" >All Products</a></h1>
 
 				{% for category in categories %}

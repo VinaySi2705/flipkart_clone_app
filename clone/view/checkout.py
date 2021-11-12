@@ -29,6 +29,8 @@ class Checkout(View):
                               phone=phone,
                               quantity=cart.get(str(product.id)),
                               )
+                product.quantity -=cart.get(str(product.id))
+                product.save()              
                 order.save()
 
             request.session['cart'] = {}
