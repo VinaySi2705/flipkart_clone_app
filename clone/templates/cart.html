@@ -16,6 +16,7 @@
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Total</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,13 @@
                     <td>{{product.price}}</td>
                     <td>{{product|cart_quantity:request.session.cart}}</td>
                     <td>{{product|price_total:request.session.cart}}</td>
+                    <td>
+                      <form action ='/cart' method="POST">
+                        {% csrf_token %}
+                        <input hidden type="text" name="remove_item" value={{product.id}}>
+                        <input type="submit" class="btn-block btn-danger" value="remove">
+                      </form>
+                    </td>  
                 </tr>
 
                 {% endfor %}

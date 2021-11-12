@@ -1,5 +1,5 @@
 from django.urls import path
-from . views import logout  # ,profile
+from . views import logout 
 from clone.view.index import Index
 from clone.view.signup import Signup
 from clone.view.checkout import Checkout
