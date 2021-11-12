@@ -24,7 +24,7 @@ class Index(View):
                         messages.warning(request,'Item is out of limit')
                         return redirect('homepage')
             else:
-                if quantity<item.quantity:
+                if item.quantity!=0:
                     cart[product]=1
                 else:
                     messages.warning(request,'Item is out of limit')

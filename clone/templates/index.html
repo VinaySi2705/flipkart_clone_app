@@ -39,8 +39,8 @@ swal('{{msg}}')
 						<p class="card-text"><b>Price=RS.{{product.price}}</b></p>
             {% if request.session.customer %}
 						 {% if product.quantity == 0 %}
-						
-						   <input type="button"class="btn btn-primary"	value="Out of Cart">
+						   <button class="btn btn-primary">Out of cart</button>
+						   
 							{% else %}
               {% if product|is_in_cart:request.session.cart %}
                 <div class="btn-group-vertical">
