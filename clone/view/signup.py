@@ -2,7 +2,7 @@ from django.views import View
 from django.shortcuts import render, redirect
 from clone.models import Customer
 from django.contrib.auth.hashers import make_password
-
+from django.contrib import messages
 
 class Signup(View):
     def get(self, request):
@@ -39,6 +39,7 @@ class Signup(View):
         if not error_message:
             customer.password = make_password(customer.password)
             customer.save()  # here we call the function from model customer
+            messages.success(request,"ACCOUNT CREATED")
             return redirect('login')
         else:
             value['error'] = error_message

@@ -3,6 +3,12 @@
 
 {% block content %}
 {% load cart %}
+{% for msg in messages %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+swal('{{msg}}')
+</script>
+{% endfor %}
 <div class="container">
    <div>
         <h1 class="text-center">Your Cart</h1>

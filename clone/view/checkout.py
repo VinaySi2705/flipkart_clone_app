@@ -1,7 +1,7 @@
 from django.views import View
 from clone.models import Product, Order, Customer
 from django.shortcuts import redirect, render
-
+from django.contrib import messages
 
 class Checkout(View):
     def get(self, request):
@@ -15,8 +15,8 @@ class Checkout(View):
         #     return redirect('login')
         cart = request.session.get('cart')
         if not cart:
-            error_message = "Cart is empty!!please add item to the cart"
-            return render(request, 'index.html', {'error': error_message})
+            messages.warning(request,'Cart is empty!!please add item to the cart')
+            return redirect('homepage')
         products = Product.get_products_by_id(list(cart.keys()))
 
         # print(address,phone,customer,cart,products)
@@ -32,6 +32,7 @@ class Checkout(View):
                 order.save()
 
             request.session['cart'] = {}
+            messages.success(request,'Ordered Successfully')
             return redirect('cart')
 
         else:

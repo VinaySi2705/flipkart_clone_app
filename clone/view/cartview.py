@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from clone.models import Product
 from django.views import View
-
-
+from django.contrib import messages
 class Cart(View):
     def get(self, request):
         ids = list(request.session.get('cart').keys())
@@ -18,9 +17,11 @@ class Cart(View):
             request.session['cart'] = cart
             ids = list(request.session.get('cart').keys())
             products = Product.get_products_by_id(ids)
+            messages.success(request,' Selected item is removed')
             return render(request, 'cart.html', {'products': products})
 
         elif clear:
             request.session.get('cart').clear()
             request.session['cart'] = {}
+            messages.success(request,'All Items Are Removed')
             return redirect('cart')

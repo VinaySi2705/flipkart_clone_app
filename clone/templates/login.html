@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% for msg in messages %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+swal('{{msg}}')
+</script>
+{% endfor %}
 <div class="card text-center">
   <div class="card-header">
     <h1>Login Here</h1>
@@ -9,7 +15,7 @@
 <form action="/login" method="POST">
   <div class="card-body">
   {% csrf_token %}
-  {% if error%}
+  {% if error %}
      <div class="alert alert-danger" role="alert">
        {{error}}
        </div>

@@ -13,11 +13,13 @@
 
 		<div class="col-lg-3 mx-auto">
 			<div class="list-group">
-        {% if error %}
-        <div class="alert alert-danger">
-          {{error}}
-        </div>
-        {% endif %}
+
+        {% for msg in messages %}
+				<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+				<script>
+				swal('{{msg}}')
+				</script>
+        {% endfor %}
 				<h1><a href="/" class="list-group-item list-group-item-action list-group-item active" >All Products</a></h1>
 
 				{% for category in categories %}

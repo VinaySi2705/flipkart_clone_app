@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from clone.models import Customer
 from django.contrib.auth.hashers import check_password, make_password
-
+from django.contrib import messages
 
 class ChangePassword(View):
     def get(self, request):
@@ -20,7 +20,7 @@ class ChangePassword(View):
             if new_password == confirm_password:
                 customer.password = make_password(new_password)
                 customer.save()
-                print('done')
+                messages.success(request,"Password changed successfully")
                 return redirect('Logout')
             else:
                 error_message = "Both password doesn't match"
