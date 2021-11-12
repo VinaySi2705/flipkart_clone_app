@@ -35,7 +35,7 @@
                         <input hidden type="text" name="remove_item" value={{product.id}}>
                         <input type="submit" class="btn-block btn-danger" value="remove">
                       </form>
-                    </td>  
+                    </td>
                 </tr>
 
                 {% endfor %}
@@ -54,6 +54,11 @@
         <div class="m-3 p-3">
             <h1><a href="#" data-toggle="modal"  data-target="#exampleModal">Check out</a></h1>
         </div>
+        <form action='/cart' method="POST">
+        {% csrf_token %}
+        <input hidden type="text" name="clear" value=True >
+        <input type="submit" class="btn-block btn-lg btn-danger" value="Remove all items">
+      </form>
    </div>
 </div>
 
