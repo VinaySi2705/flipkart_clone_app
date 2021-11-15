@@ -20,7 +20,6 @@ class ChangePassword(View):
             if new_password == confirm_password:
                 customer.password = make_password(new_password)
                 customer.save()
-                messages.success(request,"Password changed successfully")
                 return redirect('Logout')
             else:
                 error_message = "Both password doesn't match"

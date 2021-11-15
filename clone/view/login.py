@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from clone.models import Customer
 from django.views import View
 from django.contrib.auth.hashers import check_password
-
+from django.contrib import messages
 
 class Login(View):
     def get(self, request):
@@ -18,9 +18,10 @@ class Login(View):
             if flag:
                 request.session['customer'] = customer.id
                 request.session['email'] = customer.email
+                messages.success(request,"Successfully Logged In")
                 return redirect('homepage')
             else:
                 error_message = "Email or Password invalid!!!!"
         else:
-            error_message = "Email or Passworrd is invalid!!"
+            error_message = "Email or Password is invalid!!"
         return render(request, 'login.html', {'error': error_message})
